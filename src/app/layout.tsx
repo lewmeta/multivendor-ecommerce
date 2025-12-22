@@ -4,6 +4,7 @@ import { Barlow } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import AuthProvider from "@/components/providers/AuthProvider";
 
 
 const geistSans = localFont({
@@ -34,20 +35,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${barolowFont.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+    <AuthProvider>
+      <html lang="en" suppressHydrationWarning={true}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} ${barolowFont.variable} relative h-full font-sans antialiased min-h-screen flex items-center justify-center`}
         >
-          {children}
-        </ThemeProvider>
-        <Toaster richColors />
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster richColors />
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
