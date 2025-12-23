@@ -21,6 +21,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 // Once 'mounted' is true, we use the actual user/system preference.
                 baseTheme: mounted && resolvedTheme === "dark" ? dark : undefined,
             }}
+            afterSignOutUrl={"/"}
         >
             {children}
         </ClerkProvider>
