@@ -38,7 +38,7 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="en" suppressHydrationWarning={true}>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${barolowFont.variable} relative h-full font-sans antialiased min-h-screen flex items-center justify-center`}
+          className={`${geistSans.variable} ${geistMono.variable} ${barolowFont.variable} relative h-full font-sans antialiased min-h-screen w-full flex items-center justify-center`}
         >
           <ThemeProvider
             attribute="class"
@@ -46,7 +46,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <div className="h-full w-full">
+              {children}
+            </div>
           </ThemeProvider>
           <Toaster richColors />
         </body>
